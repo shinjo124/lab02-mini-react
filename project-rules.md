@@ -1,4 +1,3 @@
-# Project Rules
 - No `var`, `keypress`, `keyCode`, `innerHTML`, or inline `onclick`
 - Semantic HTML tags only (no div soup)
 - Contract first: define the shape, then code
