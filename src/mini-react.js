@@ -25,14 +25,11 @@ export function renderToDOM(vNode) {
       ? document.createTextNode(String(props.nodeValue ?? ''))
       : document.createElement(type);
 
+  if (type !== 'TEXT_ELEMENT') dom.__vnode = vNode;
+
   for (const [name, value] of Object.entries(props)) {
     if (name === 'children' || name === 'nodeValue' || name === 'key') continue;
-    if (name.startsWith('on')) {
-      if (typeof value === 'function') {
-        dom.addEventListener(name.slice(2).toLowerCase(), value);
-      }
-      continue;
-    }
+    if (name.startsWith('on')) continue;
     if (name === 'className') {
       if (value != null && value !== false) dom.setAttribute('class', String(value));
     } else if (name === 'style' && value && typeof value === 'object') {
