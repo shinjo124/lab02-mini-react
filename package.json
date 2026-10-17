@@ -1,0 +1,25 @@
+{
+  "name": "mini-react",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000l\u0000a\u0000b\u00000\u00002\u0000-\u0000m\u0000i\u0000n\u0000i\u0000-\u0000r\u0000e\u0000a\u0000c\u0000t\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shinjo124/lab02-mini-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/shinjo124/lab02-mini-react/issues"
+  },
+  "homepage": "https://github.com/shinjo124/lab02-mini-react#readme",
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}
