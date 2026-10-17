@@ -17,3 +17,34 @@ export function createElement(type, props, ...children) {
     },
   };
 }
+
+export function renderToDOM(vNode) {
+  const { type, props = {} } = vNode;
+  const dom =
+    type === 'TEXT_ELEMENT'
+      ? document.createTextNode(String(props.nodeValue ?? ''))
+      : document.createElement(type);
+
+  for (const [name, value] of Object.entries(props)) {
+    if (name === 'children' || name === 'nodeValue' || name === 'key') continue;
+    if (name.startsWith('on')) {
+      if (typeof value === 'function') {
+        dom.addEventListener(name.slice(2).toLowerCase(), value);
+      }
+      continue;
+    }
+    if (name === 'className') {
+      if (value != null && value !== false) dom.setAttribute('class', String(value));
+    } else if (name === 'style' && value && typeof value === 'object') {
+      Object.assign(dom.style, value);
+    } else if (value != null && value !== false) {
+      dom.setAttribute(name, value === true ? '' : String(value));
+    }
+  }
+
+  for (const child of props.children ?? []) {
+    dom.appendChild(renderToDOM(child));
+  }
+
+  return dom;
+}
